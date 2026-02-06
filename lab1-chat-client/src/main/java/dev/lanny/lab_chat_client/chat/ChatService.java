@@ -13,10 +13,15 @@ public class ChatService {
     }
 
     public String chat(String userMessage) {
-        return chatClient
-                .prompt()
-                .user(userMessage)
-                .call()
-                .content();
+        try {
+            return chatClient
+                    .prompt()
+                    .user(userMessage)
+                    .call()
+                    .content();
+        } catch (Exception e) {
+            return "LLM no disponible (API key no configurada o error de conexión).";
+        }
     }
+
 }
