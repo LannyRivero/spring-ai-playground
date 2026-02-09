@@ -3,6 +3,7 @@ package dev.lanny.lab_chat_client.api;
 import org.springframework.web.bind.annotation.*;
 
 import dev.lanny.lab_chat_client.chat.application.ChatService;
+import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
 
 /**
  * REST controller exposing a minimal HTTP API for interacting with an AI chat.
@@ -36,7 +37,12 @@ public class ChatController {
 
     @PostMapping
     public ChatResponse chat(@RequestBody ChatRequest request) {
-        String response = chatService.chat(request.message());
+
+        // Translate transport DTO into a domain value object
+        ChatMessage message = new ChatMessage(request.message());
+
+        String response = chatService.chat(message);
+
         return new ChatResponse(response);
     }
 }
