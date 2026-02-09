@@ -1,4 +1,4 @@
-package dev.lanny.lab_chat_client.chat;
+package dev.lanny.lab_chat_client.chat.application;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;

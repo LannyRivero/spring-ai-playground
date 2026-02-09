@@ -2,7 +2,7 @@ package dev.lanny.lab_chat_client.api;
 
 import org.springframework.web.bind.annotation.*;
 
-import dev.lanny.lab_chat_client.chat.ChatService;
+import dev.lanny.lab_chat_client.chat.application.ChatService;
 
 /**
  * REST controller exposing a minimal HTTP API for interacting with an AI chat.
