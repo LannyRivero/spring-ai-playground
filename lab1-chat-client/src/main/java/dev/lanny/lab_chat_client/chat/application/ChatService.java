@@ -44,6 +44,7 @@ public class ChatService {
         try {
             return chatClient
                     .prompt()
+                     // Basic prompting: user message only (Lab 01)
                     .user(userMessage.content())
                     .call()
                     .content();

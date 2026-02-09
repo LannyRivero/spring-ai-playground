@@ -38,7 +38,6 @@ public class ChatController {
     @PostMapping
     public ChatResponse chat(@RequestBody ChatRequest request) {
 
-        // Translate transport DTO into a domain value object
         ChatMessage message = new ChatMessage(request.message());
 
         String response = chatService.chat(message);
