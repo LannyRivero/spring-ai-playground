@@ -47,22 +47,23 @@ Estas capacidades se explorarán en laboratorios posteriores.
 
 ## Ejecución
 1. Configurar la variable de entorno:
-   ```bash
+```bash
    export SPRING_AI_OPENAI_API_KEY=your_api_key
 ```
 
 2. Ejecutar la aplicación:
-   ```bash
+```bash
    mvn spring-boot:run
 
 ```
 
 3. Probar el endpoint:
-   ```bash
+```bash
    POST /api/chat
 {
   "message": "Explícame qué es Spring AI en una frase"
 ```
+
 ## Documentación adicional
 
 Para una explicación más detallada del diseño, las decisiones tomadas y los
