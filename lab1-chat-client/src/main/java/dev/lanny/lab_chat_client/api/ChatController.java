@@ -14,7 +14,8 @@ import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
  * This controller acts as an input adapter and delegates all AI-related logic
  * to the application service layer.
  * </p>
- *
+ * It deliberately contains no knowledge about:
+ * </p>
  * <p>
  * It deliberately contains no knowledge about:
  * </p>
