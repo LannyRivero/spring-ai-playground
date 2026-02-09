@@ -15,6 +15,7 @@ import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
  *
  * <p>
  * It deliberately contains no knowledge about:
+ * </p>
  * <ul>
  * <li>LLM providers</li>
  * <li>Prompt construction</li>
