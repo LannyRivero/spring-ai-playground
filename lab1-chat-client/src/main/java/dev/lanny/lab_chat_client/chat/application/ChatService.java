@@ -15,8 +15,7 @@ import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
  * interface for sending user messages to the model.
  * </p>
  *
- * <p>
- * Design considerations:
+ * <p> Design considerations:
  * <ul>
  * <li>The controller layer must not depend on Spring AI or OpenAI
  * directly.</li>
