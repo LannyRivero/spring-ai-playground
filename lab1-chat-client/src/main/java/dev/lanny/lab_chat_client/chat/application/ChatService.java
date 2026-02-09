@@ -1,5 +1,7 @@
 package dev.lanny.lab_chat_client.chat.application;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,8 @@ import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
 @Service
 public class ChatService {
 
+    private static final Logger log = LoggerFactory.getLogger(ChatService.class);
+
     private final ChatClient chatClient;
 
     public ChatService(ChatClient.Builder chatClientBuilder) {
@@ -43,13 +47,15 @@ public class ChatService {
         try {
             return chatClient
                     .prompt()
-                     // Basic prompting: user message only (Lab 01)
                     .user(userMessage.content())
                     .call()
                     .content();
-        } catch (Exception e) {
-            return "LLM no disponible (API key no configurada o error de conexión).";
+        } catch (Exception ex) {
+            log.error("LLM invocation failed", ex);
+            throw new ChatUnavailableException(
+                    "LLM is currently unavailable",
+                    ex
+            );
         }
     }
-
 }
