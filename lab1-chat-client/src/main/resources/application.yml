@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: lab-chat-client
+
+  ai:
+    openai:
+      chat:
+        options:
+          model: gpt-5-nano
