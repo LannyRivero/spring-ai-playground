@@ -1,5 +1,7 @@
 package dev.lanny.lab_chat_client.api;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import dev.lanny.lab_chat_client.chat.application.ChatService;
@@ -39,10 +41,23 @@ public class ChatController {
     @PostMapping
     public ChatResponse chat(@RequestBody ChatRequest request) {
 
+        if (request == null || request.message() == null || request.message().isBlank()) {
+            throw new IllegalArgumentException("Message must not be blank.");
+        }
+
         ChatMessage message = new ChatMessage(request.message());
 
         String response = chatService.chat(message);
 
         return new ChatResponse(response);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body(new ErrorResponse(ex.getMessage()));
+    }
+
+    private record ErrorResponse(String error) {
     }
 }
