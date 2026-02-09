@@ -3,6 +3,8 @@ package dev.lanny.lab_chat_client.chat.application;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
+import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
+
 /**
  * Application service responsible for interacting with a Large Language Model
  * (LLM)
@@ -38,11 +40,11 @@ public class ChatService {
         this.chatClient = chatClientBuilder.build();
     }
 
-    public String chat(String userMessage) {
+    public String chat(ChatMessage userMessage) {
         try {
             return chatClient
                     .prompt()
-                    .user(userMessage)
+                    .user(userMessage.content())
                     .call()
                     .content();
         } catch (Exception e) {
