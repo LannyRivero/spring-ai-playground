@@ -59,9 +59,12 @@ Estas capacidades se explorarán en laboratorios posteriores.
 
 3. Probar el endpoint:
 ```bash
-   POST /api/chat
-{
-  "message": "Explícame qué es Spring AI en una frase"
+curl -X POST http://localhost:8080/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "Explícame qué es Spring AI en una frase"
+  }'
+ 
 ```
 
 ## Documentación adicional
