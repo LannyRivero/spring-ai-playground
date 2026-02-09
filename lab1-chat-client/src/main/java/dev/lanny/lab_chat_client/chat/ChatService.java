@@ -3,6 +3,32 @@ package dev.lanny.lab_chat_client.chat;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
+/**
+ * Application service responsible for interacting with a Large Language Model
+ * (LLM)
+ * using Spring AI ChatClient.
+ *
+ * <p>
+ * This service encapsulates all AI-related concerns and provides a simple
+ * interface for sending user messages to the model.
+ * </p>
+ *
+ * <p>
+ * Design considerations:
+ * <ul>
+ * <li>The controller layer must not depend on Spring AI or OpenAI
+ * directly.</li>
+ * <li>The LLM is treated as an external infrastructure dependency.</li>
+ * <li>Failures (missing API key, connectivity issues) are handled
+ * gracefully.</li>
+ * </ul>
+ *
+ * <p>
+ * This implementation corresponds to Lab 01: basic chat without memory,
+ * retrieval (RAG), or tools.
+ * </p>
+ */
+
 @Service
 public class ChatService {
 
