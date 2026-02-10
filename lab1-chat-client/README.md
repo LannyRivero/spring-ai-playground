@@ -124,17 +124,51 @@ El proyecto expone su contrato REST mediante OpenAPI / Swagger, lo que permite
 explorar y probar el endpoint sin necesidad de herramientas externas como curl
 o Postman.
 
-Una vez levantada la aplicación, la documentación interactiva está disponible en:
-
-http://localhost:8080/swagger-ui.html
-
 Desde Swagger es posible:
 - Ver el contrato del endpoint `/api/chat`
 - Probar peticiones directamente desde el navegador
 - Validar el formato de entrada y salida de la API
 
-El uso de Swagger en este laboratorio refuerza el enfoque de **API-first**
-y permite validar el comportamiento del sistema como una caja negra.
+Una vez levantada la aplicación, la documentación interactiva está disponible en:
+
+http://localhost:8080/swagger-ui.html
+
+
+### Acceso a Swagger UI
+
+Al acceder a la URL se muestra la lista de endpoints disponibles.  
+En este laboratorio se expone un único endpoint de chat:
+
+![Swagger – listado de endpoints](docs/images/swagger-chat-endpoint.png)
+
+---
+
+### Probar el endpoint desde Swagger
+
+Swagger permite ejecutar peticiones directamente desde el navegador.
+
+Ejemplo de **request body** esperado por el endpoint `/api/chat`:
+
+![Swagger – request body](docs/images/swagger-request.png)
+
+---
+
+### Respuesta del servidor
+
+La respuesta contiene el texto generado por el modelo de lenguaje:
+
+![Swagger – response](docs/images/swagger-response.png)
+
+---
+
+Desde Swagger es posible:
+- Explorar el contrato REST
+- Validar el formato de entrada y salida
+- Ejecutar peticiones reales contra el backend
+
+El uso de Swagger en este laboratorio refuerza el enfoque **API-first** y permite
+validar el comportamiento del sistema como una **caja negra**, alineado con
+buenas prácticas de desarrollo backend.
 
 ## Documentación adicional
 
