@@ -49,7 +49,7 @@ public class ChatController {
             """)
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "AI response generated successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid or blank message"),
+            @ApiResponse(responseCode = "400", description = "Request validation failed (e.g., invalid or blank message)"),
             @ApiResponse(responseCode = "503", description = "AI service unavailable")
     })
 
