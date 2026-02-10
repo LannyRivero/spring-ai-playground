@@ -23,6 +23,7 @@ public class ApiExceptionHandler {
                 .body(new ErrorResponse(ex.getMessage()));
     }
 
-    private record ErrorResponse(String error) {
+    public record ErrorResponse(String error) {
     }
 }
+
