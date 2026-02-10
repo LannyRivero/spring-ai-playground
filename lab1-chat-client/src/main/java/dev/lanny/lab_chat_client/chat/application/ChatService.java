@@ -8,16 +8,17 @@ import org.springframework.stereotype.Service;
 import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
 
 /**
- * Application service responsible for interacting with a Large Language Model
- * (LLM)
+ * Application service responsible for interacting with a Large Language
+ * Model(LLM)
  * using Spring AI ChatClient.
  *
  * <p>
- * This service encapsulates all AI-related concerns and provides a simple
- * interface for sending user messages to the model.
+ * This service encapsulates all AI-related concerns and exposes a minimal
+ * interface to the rest of the application.
  * </p>
  *
- * <p> Design considerations:
+ * <p>
+ * Design considerations:
  * <ul>
  * <li>The controller layer must not depend on Spring AI or OpenAI
  * directly.</li>
@@ -40,26 +41,34 @@ public class ChatService {
     private final ChatClient chatClient;
 
     public ChatService(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+        this.chatClient = chatClientBuilder
+                .defaultSystem("""
+                                You are a technical assistant specialized in Spring Boot and backend development.
+                                Answer concisely and clearly.
+                                Do not invent information.
+                        """)
+                .build();
+
     }
 
+        /**
+     * Sends a user message to the LLM and returns the generated response.
+     *
+     * @param userMessage domain value object containing the user input
+     * @return generated response from the LLM
+     */
     public String chat(ChatMessage userMessage) {
         try {
-            String content = userMessage.content();
-            if (content == null) {
-                throw new IllegalArgumentException("User message content cannot be null");
-            }
             return chatClient
                     .prompt()
-                    .user(content)
+                    .user(userMessage.content())
                     .call()
                     .content();
         } catch (Exception ex) {
             log.error("LLM invocation failed", ex);
             throw new ChatUnavailableException(
                     "LLM is currently unavailable",
-                    ex
-            );
+                    ex);
         }
     }
 }
