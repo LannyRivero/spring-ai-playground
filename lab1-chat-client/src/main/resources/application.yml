@@ -7,4 +7,6 @@ spring:
       chat:
         options:
           model: gpt-4o-mini
+          temperature: 0.3 # Creativity level (0.0 - 1.0)
+          max-tokens: 200  # Maximum number of tokens in the response
 
