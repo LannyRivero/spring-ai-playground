@@ -45,9 +45,13 @@ public class ChatService {
 
     public String chat(ChatMessage userMessage) {
         try {
+            String content = userMessage.content();
+            if (content == null) {
+                throw new IllegalArgumentException("User message content cannot be null");
+            }
             return chatClient
                     .prompt()
-                    .user(userMessage.content())
+                    .user(content)
                     .call()
                     .content();
         } catch (Exception ex) {
