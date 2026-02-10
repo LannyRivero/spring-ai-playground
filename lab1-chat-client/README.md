@@ -124,11 +124,6 @@ El proyecto expone su contrato REST mediante OpenAPI / Swagger, lo que permite
 explorar y probar el endpoint sin necesidad de herramientas externas como curl
 o Postman.
 
-Desde Swagger es posible:
-- Ver el contrato del endpoint `/api/chat`
-- Probar peticiones directamente desde el navegador
-- Validar el formato de entrada y salida de la API
-
 Una vez levantada la aplicación, la documentación interactiva está disponible en:
 
 http://localhost:8080/swagger-ui.html
