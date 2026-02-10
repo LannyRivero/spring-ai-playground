@@ -165,6 +165,13 @@ El uso de Swagger en este laboratorio refuerza el enfoque **API-first** y permit
 validar el comportamiento del sistema como una **caja negra**, alineado con
 buenas prácticas de desarrollo backend.
 
+📌 **Nota**
+  
+ Las capturas de Swagger incluidas en este documento corresponden a una
+ ejecución **local** del proyecto (`localhost`) con la aplicación levantada
+ mediante `mvn spring-boot:run` y una API key configurada por variable de entorno.
+
+
 ## Documentación adicional
 
 Para una explicación más detallada del diseño, las decisiones tomadas y los
