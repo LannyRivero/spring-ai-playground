@@ -7,6 +7,7 @@ import dev.lanny.lab_chat_client.chat.domain.ChatMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 
 /**
  * REST controller exposing a minimal HTTP API for interacting with an AI chat.
@@ -53,7 +54,7 @@ public class ChatController {
     })
 
     @PostMapping
-    public ChatResponse chat(@RequestBody ChatRequest request) {
+    public ChatResponse chat(@Valid @RequestBody ChatRequest request) {
 
         ChatMessage message = new ChatMessage(request.message());
         String response = chatService.chat(message);
