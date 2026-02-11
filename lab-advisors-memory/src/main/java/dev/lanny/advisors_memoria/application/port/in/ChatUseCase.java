@@ -1,5 +1,6 @@
 package dev.lanny.advisors_memoria.application.port.in;
 
+import dev.lanny.advisors_memoria.application.result.ChatResult;
 import dev.lanny.advisors_memoria.domain.model.ConversationId;
 
 /**
