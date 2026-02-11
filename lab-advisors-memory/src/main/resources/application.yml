@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: advisors-memoria
+
+memory:
+  max-messages: 10
