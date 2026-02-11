@@ -1,6 +1,7 @@
 package dev.lanny.advisors_memoria.domain.model;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * Inmutable representation of  conversation message
@@ -15,7 +16,8 @@ public final class Message {
         if (content == null || content.isEmpty()) {
             throw new IllegalArgumentException("Message content cannot be empty");
         }
-        this.role = role;
+        this.role = Objects.requireNonNull(role, "MessageRole cannot be null");
+
         this.content = content;
         this.timestamp = Instant.now();
     }
