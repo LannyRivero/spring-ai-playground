@@ -1,6 +1,8 @@
 spring:
   application:
     name: advisors-memoria
+  profiles:
+    default: dev
 
 memory:
   max-messages: 10
