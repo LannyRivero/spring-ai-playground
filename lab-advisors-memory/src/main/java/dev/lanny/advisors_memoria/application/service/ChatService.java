@@ -2,6 +2,7 @@ package dev.lanny.advisors_memoria.application.service;
 
 import dev.lanny.advisors_memoria.application.command.ChatCommand;
 import dev.lanny.advisors_memoria.application.port.in.ChatUseCase;
+import dev.lanny.advisors_memoria.application.port.out.ChatModelGateway;
 import dev.lanny.advisors_memoria.application.port.out.ConversationMemoryStore;
 import dev.lanny.advisors_memoria.application.result.ChatResult;
 import dev.lanny.advisors_memoria.config.MemoryProperties;
@@ -30,11 +31,14 @@ public class ChatService implements ChatUseCase {
 
     private final ConversationMemoryStore memoryStore;
     private final MemoryProperties memoryProperties;
+    private final ChatModelGateway chatModelGateway;
 
     public ChatService(ConversationMemoryStore memoryStore,
-            MemoryProperties memoryProperties) {
+            MemoryProperties memoryProperties,
+            ChatModelGateway chatModelGateway) {
         this.memoryStore = memoryStore;
         this.memoryProperties = memoryProperties;
+        this.chatModelGateway = chatModelGateway;
     }
 
     @Override
@@ -55,7 +59,7 @@ public class ChatService implements ChatUseCase {
         memory.append(new Message(MessageRole.USER, command.message()));
 
         // Generate assistant response (temporary stub)
-        String assistantResponse = generateStubResponse(command.message());
+        String assistantResponse = chatModelGateway.generateResponse(memory.history());
 
         // Append assistant response
         memory.append(new Message(MessageRole.ASSISTANT, assistantResponse));
@@ -67,16 +71,5 @@ public class ChatService implements ChatUseCase {
                 assistantResponse,
                 conversationId.value());
     }
-
-    /**
-     * Temporary stub response.
-     *
-     * <p>
-     * This will be replaced by the LLM integration
-     * through Spring AI.
-     * </p>
-     */
-    private String generateStubResponse(String userMessage) {
-        return "Echo: " + userMessage;
-    }
+    
 }
