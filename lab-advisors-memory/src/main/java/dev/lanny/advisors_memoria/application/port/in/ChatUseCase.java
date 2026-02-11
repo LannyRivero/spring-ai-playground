@@ -1,7 +1,7 @@
 package dev.lanny.advisors_memoria.application.port.in;
 
+import dev.lanny.advisors_memoria.application.command.ChatCommand;
 import dev.lanny.advisors_memoria.application.result.ChatResult;
-import dev.lanny.advisors_memoria.domain.model.ConversationId;
 
 /**
  * Primary port (input port) for chat interactions.
@@ -17,9 +17,8 @@ public interface ChatUseCase {
     /**
      * Processes a chat message within a given conversation.
      *
-     * @param conversationId unique conversation identifier
-     * @param message        user message (must not be null or blank)
+     * @param command chat command containing conversation id and message
      * @return ChatResult containing assistant response and conversation id
      */
-    ChatResult chat(ConversationId conversationId, String message);
+    ChatResult chat(ChatCommand command);
 }
